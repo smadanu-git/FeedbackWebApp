@@ -1,4 +1,4 @@
-package com.feedback.main.service.impl;
+package com.feedback.service.impl;
 
 import java.util.List;
 

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.feedback.dto.JwtRequest;
 import com.feedback.dto.JwtResponse;
 import com.feedback.dto.UserDTO;
-import com.feedback.main.service.impl.JwtUserDetailsService;
 import com.feedback.security.JwtTokenUtil;
+import com.feedback.service.impl.JwtUserDetailsService;
 
 @RestController
 @CrossOrigin
