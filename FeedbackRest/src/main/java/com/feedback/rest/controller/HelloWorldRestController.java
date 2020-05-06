@@ -1,9 +1,9 @@
-package com.feedback.main.rest.controller;
+package com.feedback.rest.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.feedback.main.dto.HelloWorldBean;
+import com.feedback.dto.HelloWorldBean;
 
 @RestController
 public class HelloWorldRestController 

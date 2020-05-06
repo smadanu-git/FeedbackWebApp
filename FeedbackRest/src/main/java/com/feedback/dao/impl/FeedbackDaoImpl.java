@@ -1,4 +1,4 @@
-package com.feedback.main.dao.impl;
+package com.feedback.dao.impl;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.feedback.main.dao.FeedbackDao;
-import com.feedback.main.entities.User;
+import com.feedback.dao.FeedbackDao;
+import com.feedback.entities.User;
 
 @Repository
 public class FeedbackDaoImpl implements FeedbackDao {

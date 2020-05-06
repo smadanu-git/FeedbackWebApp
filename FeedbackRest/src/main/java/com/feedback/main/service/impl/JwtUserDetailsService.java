@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.feedback.main.dto.UserDTO;
-import com.feedback.main.entities.User;
-import com.feedback.main.jpa.repositories.UserRepository;
+import com.feedback.dto.UserDTO;
+import com.feedback.entities.User;
+import com.feedback.jpa.repositories.UserRepository;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {

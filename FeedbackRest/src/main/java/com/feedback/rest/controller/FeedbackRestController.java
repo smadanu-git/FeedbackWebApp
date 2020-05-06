@@ -1,4 +1,4 @@
-package com.feedback.main.rest.controller;
+package com.feedback.rest.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.feedback.main.entities.User;
-import com.feedback.main.service.FeedbackService;
+import com.feedback.entities.User;
+import com.feedback.service.FeedbackService;
 
 @RestController
 @CrossOrigin

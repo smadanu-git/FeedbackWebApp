@@ -1,4 +1,4 @@
-package com.feedback.main.rest.controller;
+package com.feedback.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.feedback.main.JwtTokenUtil;
-import com.feedback.main.dto.JwtRequest;
-import com.feedback.main.dto.JwtResponse;
-import com.feedback.main.dto.UserDTO;
+import com.feedback.dto.JwtRequest;
+import com.feedback.dto.JwtResponse;
+import com.feedback.dto.UserDTO;
 import com.feedback.main.service.impl.JwtUserDetailsService;
+import com.feedback.security.JwtTokenUtil;
 
 @RestController
 @CrossOrigin

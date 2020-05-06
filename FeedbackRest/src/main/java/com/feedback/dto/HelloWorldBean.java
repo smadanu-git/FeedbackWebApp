@@ -1,4 +1,4 @@
-package com.feedback.main.dto;
+package com.feedback.dto;
 
 public class HelloWorldBean {
 	public String message;

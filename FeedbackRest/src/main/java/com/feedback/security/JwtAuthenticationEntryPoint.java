@@ -1,4 +1,4 @@
-package com.feedback.main;
+package com.feedback.security;
 
 import java.io.IOException;
 import java.io.Serializable;

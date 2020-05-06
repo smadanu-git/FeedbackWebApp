@@ -1,8 +1,8 @@
-package com.feedback.main.dao;
+package com.feedback.dao;
 
 import java.util.List;
 
-import com.feedback.main.entities.User;
+import com.feedback.entities.User;
 
 public interface FeedbackDao {
 	

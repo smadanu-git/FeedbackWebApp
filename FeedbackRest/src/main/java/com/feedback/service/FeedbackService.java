@@ -1,8 +1,8 @@
-package com.feedback.main.service;
+package com.feedback.service;
 
 import java.util.List;
 
-import com.feedback.main.entities.User;
+import com.feedback.entities.User;
 
 public interface FeedbackService {
 	List<User> getAdminDasboard();

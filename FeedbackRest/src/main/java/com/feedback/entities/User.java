@@ -1,4 +1,4 @@
-package com.feedback.main.entities;
+package com.feedback.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
