@@ -1,4 +1,4 @@
-package com.feedback.main;
+package com.feedback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
