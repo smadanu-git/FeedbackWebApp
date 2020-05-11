@@ -10,11 +10,14 @@ CREATE TABLE `feedback`.`roles` (
 
 CREATE TABLE `feedback`.`users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(500) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `user_name` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIusersQUE` (`email`)
+  UNIQUE KEY `email_UNIusersQUE` (`email`),
+  UNIQUE KEY `username_UNIusersQUE` (`user_name`)
 );
 
 CREATE TABLE `feedback`.`user_roles` (
@@ -48,16 +51,8 @@ VALUES
 'EMPL',
 'Employee');
 
-INSERT INTO `feedback`.`users`
-(`id`,
-`name`,
-`email`,
-`password`)
-VALUES
-(1,
-'Admin',
-'admin@feedback.com',
-'$2a$10$14NpTBvTMr64Z8iwBibztuiJvyCC6rp98S6EYnglOANK//OIvldde');
+INSERT INTO `feedback`.`users` (`id`, `email`, `password`, `last_name`, `user_name`, `first_name`) 
+VALUES (1, 'admin@feedback.com', '$2a$10$14NpTBvTMr64Z8iwBibztuiJvyCC6rp98S6EYnglOANK//OIvldde', 'Admin', 'admin', 'Admin');
 -- password
 
 INSERT INTO `feedback`.`user_roles`
@@ -68,5 +63,3 @@ VALUES
 (1,
 1,
 1);
-
-SELECT * from feedback;

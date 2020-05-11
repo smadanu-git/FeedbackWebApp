@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.feedback.entities.User;
+import com.feedback.entities.Users;
 import com.feedback.service.FeedbackService;
 
 @RestController
@@ -23,18 +23,18 @@ public class FeedbackRestController {
 	private FeedbackService feedbackService;
 	
 	@GetMapping(path="/adminDashboard", produces = "application/json")
-    public ResponseEntity<List<User>> findAll(){
-		List<User> userList = feedbackService.getAdminDasboard();
+    public ResponseEntity<List<Users>> findAll(){
+		List<Users> userList = feedbackService.getAdminDasboard();
 		
-        return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+        return new ResponseEntity<List<Users>>(userList, HttpStatus.OK);
 
     }
 	
 	@PostMapping(path="/addEmployee", produces = "application/json")
-    public ResponseEntity<List<User>> addEmployee(){
-		List<User> userList = feedbackService.getAdminDasboard();
+    public ResponseEntity<List<Users>> addEmployee(){
+		List<Users> userList = feedbackService.getAdminDasboard();
 		
-        return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+        return new ResponseEntity<List<Users>>(userList, HttpStatus.OK);
 
     }
 

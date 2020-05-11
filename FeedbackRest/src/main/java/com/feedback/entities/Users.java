@@ -1,9 +1,17 @@
 package com.feedback.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -12,22 +20,24 @@ import java.util.List;
  */
 @Entity
 @Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+@NamedQuery(name="User.findUserByName", query="SELECT u FROM Users u")
+public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String email;
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String password;
+	private String userName;
 
 	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UserRole> userRoles;
 
-	public User() {
+	public Users() {
 	}
 
 	public long getId() {
@@ -46,20 +56,40 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getPassword() {
 		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFullName() {
+		return this.firstName + " "+ this.lastName;
 	}
 
 	public List<UserRole> getUserRoles() {
@@ -72,14 +102,14 @@ public class User implements Serializable {
 
 	public UserRole addUserRole(UserRole userRole) {
 		getUserRoles().add(userRole);
-		userRole.setUser(this);
+		userRole.setUsers(this);
 
 		return userRole;
 	}
 
 	public UserRole removeUserRole(UserRole userRole) {
 		getUserRoles().remove(userRole);
-		userRole.setUser(null);
+		userRole.setUsers(null);
 
 		return userRole;
 	}

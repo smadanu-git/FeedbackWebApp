@@ -1,7 +1,19 @@
 package com.feedback.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+
 
 
 /**
@@ -20,11 +32,13 @@ public class UserRole implements Serializable {
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "roleId",referencedColumnName="id", nullable = false)
 	private Role role;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	private User user;
+	@JoinColumn(name = "userId", referencedColumnName="id", nullable = false)
+	private Users users;
 
 	public UserRole() {
 	}
@@ -36,7 +50,9 @@ public class UserRole implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 
+	
 	public Role getRole() {
 		return this.role;
 	}
@@ -45,12 +61,12 @@ public class UserRole implements Serializable {
 		this.role = role;
 	}
 
-	public User getUser() {
-		return this.user;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 }

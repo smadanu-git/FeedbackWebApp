@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.feedback.dao.FeedbackDao;
-import com.feedback.entities.User;
-import com.feedback.jpa.repositories.UserRepository;
+import com.feedback.entities.Users;
+import com.feedback.jpa.repositories.UsersRepository;
 import com.feedback.service.FeedbackService;
 
 @Service
@@ -17,10 +17,10 @@ public class FeedbackServiceImpl implements FeedbackService {
 	private FeedbackDao feedbackDao;
 	
 	@Autowired
-    UserRepository userRepository;
+    UsersRepository usersRepository;
 	
 	@Override
-	public List<User> getAdminDasboard() {
+	public List<Users> getAdminDasboard() {
 		return feedbackDao.getAdminDasboard();
 		//return userRepository.findAll();
 	}

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.feedback.dao.FeedbackDao;
-import com.feedback.entities.User;
+import com.feedback.entities.Users;
 
 @Repository
 public class FeedbackDaoImpl implements FeedbackDao {
@@ -24,9 +24,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
     
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getAdminDasboard() {
-		Query userQuery= (Query) entityManager.createQuery("from User");
-        List<User> userList = userQuery.getResultList();
+	public List<Users> getAdminDasboard() {
+		Query userQuery= (Query) entityManager.createQuery("from Users");
+        List<Users> userList = userQuery.getResultList();
         return userList;
 	}
 
