@@ -22,7 +22,7 @@ public class FeedbackRestController {
 	@Autowired
 	private FeedbackService feedbackService;
 	
-	@GetMapping(path="/adminDashboard", produces = "application/json")
+	@GetMapping(path="/myReviews", produces = "application/json")
     public ResponseEntity<List<Users>> findAll(){
 		List<Users> userList = feedbackService.getAdminDasboard();
 		

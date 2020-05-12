@@ -13,19 +13,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 /**
  * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="users")
-@NamedQuery(name="User.findUserByName", query="SELECT u FROM Users u")
+@Table(name = "users")
+@NamedQuery(name = "User.findUserByName", query = "SELECT u FROM Users u")
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String email;
 	private String firstName;
@@ -33,9 +32,17 @@ public class Users implements Serializable {
 	private String password;
 	private String userName;
 
-	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	// bi-directional many-to-one association to UserRole
+	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UserRole> userRoles;
+
+	// bi-directional many-to-one association to UserRole
+	@OneToMany(mappedBy = "reviewers", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Reviews> reviewers;
+
+	// bi-directional many-to-one association to UserRole
+	@OneToMany(mappedBy = "reviewees", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Reviews> reviewees;
 
 	public Users() {
 	}
@@ -63,7 +70,7 @@ public class Users implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -79,7 +86,7 @@ public class Users implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -89,7 +96,7 @@ public class Users implements Serializable {
 	}
 
 	public String getFullName() {
-		return this.firstName + " "+ this.lastName;
+		return this.firstName + " " + this.lastName;
 	}
 
 	public List<UserRole> getUserRoles() {
