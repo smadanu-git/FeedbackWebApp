@@ -9,6 +9,6 @@ import com.feedback.entities.Users;
 public interface UsersRepository extends CrudRepository<Users, Long> {
 
 	Users findByEmail(String email);
-	Users findByUserName(String userName);
+	Users findByUserNameAndStatus(String userName, String status);
 }
 

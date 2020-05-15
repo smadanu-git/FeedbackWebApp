@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.feedback.dao.FeedbackDao;
-import com.feedback.entities.Users;
-import com.feedback.jpa.repositories.UsersRepository;
+import com.feedback.dto.EmployeeDTO;
+import com.feedback.dto.MyReviewsDTO;
 import com.feedback.service.FeedbackService;
 
 @Service
@@ -15,44 +15,40 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	@Autowired
 	private FeedbackDao feedbackDao;
-	
-	@Autowired
-    UsersRepository usersRepository;
-	
+
 	@Override
-	public List<Users> getAdminDasboard() {
-		return feedbackDao.getAdminDasboard();
-		//return userRepository.findAll();
+	public List<MyReviewsDTO> getMyReviews(String userName) {
+		return feedbackDao.getMyReviews(userName);
 	}
 
 	@Override
-	public String getEmployeeDashboard() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MyReviewsDTO> saveReviews(MyReviewsDTO myReviews, String userName) {
+		feedbackDao.saveReviews(myReviews);
+		List<MyReviewsDTO> reviews = feedbackDao.getMyReviews(userName);
+		return reviews;
 	}
 
 	@Override
-	public String addUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EmployeeDTO> addEmployee(EmployeeDTO employee) {
+		feedbackDao.addEmployee(employee);
+		return feedbackDao.getAllEmployees();
 	}
 
 	@Override
-	public String modifyUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EmployeeDTO> editEmployee(EmployeeDTO employee) {
+		feedbackDao.editEmployee(employee);
+		return feedbackDao.getAllEmployees();
 	}
 
 	@Override
-	public String deleteUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EmployeeDTO> deleteEmployee(EmployeeDTO employee) {
+		feedbackDao.deleteEmployee(employee);
+		return feedbackDao.getAllEmployees();
+
 	}
 
 	@Override
-	public String viewUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EmployeeDTO> getAllEmployees() {
+		return feedbackDao.getAllEmployees();
 	}
-
 }

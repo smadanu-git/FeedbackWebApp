@@ -2,16 +2,21 @@ package com.feedback.service;
 
 import java.util.List;
 
-import com.feedback.entities.Users;
+import com.feedback.dto.EmployeeDTO;
+import com.feedback.dto.MyReviewsDTO;
 
 public interface FeedbackService {
-	List<Users> getAdminDasboard();
-	
-	
-	String getEmployeeDashboard();
-	String addUser();
-	String modifyUser();
-	String deleteUser();
-	String viewUsers();
-	
+
+	List<MyReviewsDTO> getMyReviews(String userName);
+
+	List<MyReviewsDTO> saveReviews(MyReviewsDTO myReviews, String userName);
+
+	List<EmployeeDTO> getAllEmployees();
+
+	List<EmployeeDTO> addEmployee(EmployeeDTO employee);
+
+	List<EmployeeDTO> editEmployee(EmployeeDTO employee);
+
+	List<EmployeeDTO> deleteEmployee(EmployeeDTO employee);
+
 }
