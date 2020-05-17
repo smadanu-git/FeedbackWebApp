@@ -2,14 +2,15 @@ package com.feedback.dao;
 
 import java.util.List;
 
+import com.feedback.dto.DropdownDTO;
 import com.feedback.dto.EmployeeDTO;
-import com.feedback.dto.MyReviewsDTO;
+import com.feedback.dto.FeedbackDTO;
 
 public interface FeedbackDao {
 
-	List<MyReviewsDTO> getMyReviews(String userName);
+	List<FeedbackDTO> getMyReviews(String userName);
 
-	void saveReviews(MyReviewsDTO myReviews);
+	void saveReviews(FeedbackDTO myReviews);
 
 	List<EmployeeDTO> getAllEmployees();
 
@@ -18,5 +19,11 @@ public interface FeedbackDao {
 	void editEmployee(EmployeeDTO employee);
 
 	void deleteEmployee(EmployeeDTO employee);
+
+	List<DropdownDTO> getEmployeeFeedbackList(long revieweeId);
+
+	List<FeedbackDTO> getFeedbackReviewers(long revieweeId, long feedbackId);
+
+	List<FeedbackDTO> addparticipants(FeedbackDTO feedbackDTO);
 
 }

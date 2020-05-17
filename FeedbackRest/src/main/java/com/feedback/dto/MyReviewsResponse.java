@@ -4,7 +4,7 @@ import java.util.List;
 
 public class MyReviewsResponse {
 	private String taskName;
-	private List<MyReviewsDTO> myReviewsList;
+	private List<FeedbackDTO> myReviewsList;
 	/**
 	 * @return the taskName
 	 */
@@ -20,13 +20,13 @@ public class MyReviewsResponse {
 	/**
 	 * @return the myReviewsList
 	 */
-	public List<MyReviewsDTO> getMyReviewsList() {
+	public List<FeedbackDTO> getMyReviewsList() {
 		return myReviewsList;
 	}
 	/**
 	 * @param myReviewsList the myReviewsList to set
 	 */
-	public void setMyReviewsList(List<MyReviewsDTO> myReviewsList) {
+	public void setMyReviewsList(List<FeedbackDTO> myReviewsList) {
 		this.myReviewsList = myReviewsList;
 	}
 	

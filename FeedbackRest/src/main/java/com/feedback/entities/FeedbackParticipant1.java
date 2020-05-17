@@ -18,10 +18,8 @@ import javax.persistence.Table;
  * The persistent class for the feedback_participants database table.
  * 
  */
-@Entity
-@Table(name="feedback_participants")
-@NamedQuery(name="FeedbackParticipant.findAll", query="SELECT f FROM FeedbackParticipant f")
-public class FeedbackParticipant implements Serializable {
+
+public class FeedbackParticipant1 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,7 +37,7 @@ public class FeedbackParticipant implements Serializable {
 	@JoinColumn(name="participant_id")
 	private Participant participant;
 
-	public FeedbackParticipant() {
+	public FeedbackParticipant1() {
 	}
 
 	public long getId() {

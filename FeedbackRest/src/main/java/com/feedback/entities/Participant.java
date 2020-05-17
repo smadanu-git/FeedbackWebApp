@@ -2,6 +2,7 @@ package com.feedback.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,50 +13,53 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.util.CollectionUtils;
 
 /**
  * The persistent class for the participants database table.
  * 
  */
 @Entity
-@Table(name="participants")
+@Table(name = "participants")
 public class Participant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private long id;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="assign_date")
+	@Column(name = "assign_date")
 	private Date assignDate;
 
-	@Column(length=300)
+	@Column(length = 300)
 	private String comments;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="complete_date")
+	@Column(name = "complete_date")
 	private Date completeDate;
 
-	@Column(length=45)
+	@Column(length = 45)
 	private String rating;
 
-	@Column(length=45)
+	@Column(length = 45)
 	private String status;
 
-	//bi-directional many-to-one association to FeedbackParticipant
-	@OneToMany(mappedBy="participant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<FeedbackParticipant> feedbackParticipants;
+	// bi-directional many-to-one association to FeedbackParticipant
+	@ManyToMany(mappedBy = "participants")
+	private Set<Feedback> feedback;
 
-	//bi-directional many-to-one association to User
+	// bi-directional many-to-one association to User
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="participant_id")
+	@JoinColumn(name = "participant_id")
 	private Users users;
 
 	public Participant() {
@@ -109,28 +113,6 @@ public class Participant implements Serializable {
 		this.status = status;
 	}
 
-	public Set<FeedbackParticipant> getFeedbackParticipants() {
-		return this.feedbackParticipants;
-	}
-
-	public void setFeedbackParticipants(Set<FeedbackParticipant> feedbackParticipants) {
-		this.feedbackParticipants = feedbackParticipants;
-	}
-
-	public FeedbackParticipant addFeedbackParticipant(FeedbackParticipant feedbackParticipant) {
-		getFeedbackParticipants().add(feedbackParticipant);
-		feedbackParticipant.setParticipant(this);
-
-		return feedbackParticipant;
-	}
-
-	public FeedbackParticipant removeFeedbackParticipant(FeedbackParticipant feedbackParticipant) {
-		getFeedbackParticipants().remove(feedbackParticipant);
-		feedbackParticipant.setParticipant(null);
-
-		return feedbackParticipant;
-	}
-
 	public Users getUsers() {
 		return this.users;
 	}
@@ -138,5 +120,26 @@ public class Participant implements Serializable {
 	public void setUsers(Users users) {
 		this.users = users;
 	}
+
+	public Set<Feedback> getFeedback() {
+		if(CollectionUtils.isEmpty(feedback)) {
+			feedback = new HashSet<Feedback>();
+		}
+		return feedback;
+	}
+	
+
+	public void setFeedback(Set<Feedback> feedback) {
+		this.feedback = feedback;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public void addFeedback(Feedback feedback) {
+        getFeedback().add(feedback);
+        feedback.getParticipants().add(this);
+    }
 
 }

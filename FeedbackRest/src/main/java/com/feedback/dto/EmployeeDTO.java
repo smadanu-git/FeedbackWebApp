@@ -8,14 +8,14 @@ public class EmployeeDTO {
 	private String firstName;
 	private String lastName;
 	private String email;
-	
-	
+	private String fullName;
 
-	public EmployeeDTO(long id, String firstName, String lastName, String email) {
+	public EmployeeDTO(long id, String firstName, String lastName, String fullName, String email) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.fullName = fullName;
 		this.email = email;
 	}
 
@@ -57,6 +57,14 @@ public class EmployeeDTO {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {
